@@ -1,6 +1,6 @@
-//×÷Õß£ºÀîÈÙ¹ó
-//Ê±¼ä£º2016-07-02
-//ÎÊÌâ£ºÊµÏÖ¹ş·òÂü±àÂë
+//ä½œè€…ï¼šæè£è´µ
+//æ—¶é—´ï¼š2016-07-02
+//é—®é¢˜ï¼šå®ç°å“ˆå¤«æ›¼ç¼–ç 
 
 #include <iostream>
 #include <vector>
@@ -12,10 +12,10 @@ using namespace std;
 
 struct Node
 {
-	char ch; //±£´æ×Ö·û
-	int freq; //±£´æ×Ö·û³öÏÖÆµÂÊ
-	int parent; //±£´æµ±Ç°½Úµã¸¸½ÚµãËùÔÚÎ»ÖÃµÄË÷ÒıºÅ
-	char child; //'0'±íÊ¾µ±Ç°½áµãÊÇ×óº¢×Ó£¬'1'±íÊ¾µ±Ç°½áµãÊÇÓÒº¢×Ó
+	char ch; //ä¿å­˜å­—ç¬¦
+	int freq; //ä¿å­˜å­—ç¬¦å‡ºç°é¢‘ç‡
+	int parent; //ä¿å­˜å½“å‰èŠ‚ç‚¹çˆ¶èŠ‚ç‚¹æ‰€åœ¨ä½ç½®çš„ç´¢å¼•å·
+	char child; //'0'è¡¨ç¤ºå½“å‰ç»“ç‚¹æ˜¯å·¦å­©å­ï¼Œ'1'è¡¨ç¤ºå½“å‰ç»“ç‚¹æ˜¯å³å­©å­
 };
 struct Comp
 {
@@ -31,7 +31,7 @@ int main()
 	int n, f;
 	char c;
 	vector<Node> Record;
-	priority_queue<PAIR,vector<PAIR>,Comp> Q; //×îĞ¡ÓÅÏÈ¶ÓÁĞ£¬ÓÃÓÚÃ¿´ÎÑ¡ÔñÁ½¸öÆµÂÊ×îĞ¡µÄ½ÚµãºÏ²¢
+	priority_queue<PAIR,vector<PAIR>,Comp> Q; //æœ€å°ä¼˜å…ˆé˜Ÿåˆ—ï¼Œç”¨äºæ¯æ¬¡é€‰æ‹©ä¸¤ä¸ªé¢‘ç‡æœ€å°çš„èŠ‚ç‚¹åˆå¹¶
 	in >> n;
 	Record.assign(2 * n - 1, Node());
 	for (int i = 0; i < n; i++)
@@ -50,11 +50,11 @@ int main()
 		q = Q.top();
 		Q.pop();
 		Q.push(PAIR(p.first + q.first, k));
+		//Record[k].freq = p.first + q.first;
 		Record[p.second].parent = k;
 		Record[p.second].child = '0';
 		Record[q.second].parent = k;
 		Record[q.second].child = '1';
-		//Record[p.second].freq = p.first + q.first;
 		k++;
 	}
 	Record[Q.top().second].parent = -1;
