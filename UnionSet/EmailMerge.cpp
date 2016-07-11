@@ -9,7 +9,7 @@
 //      Your task is to merge the usernames if they share common email address: 
 //        alice alicebest alice2016
 //        bob
-
+//***********************************************************************************************
 
 #include <iostream>
 #include <string>
