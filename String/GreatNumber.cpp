@@ -1,6 +1,6 @@
-//×÷Õß£ºÀîÈÙ¹ó
-//Ê±¼ä£º2016-07-15
-//ÃèÊö£ºÓÃ×Ö·û´®ÊµÏÖ´óÊı¾İÖ®¼äµÄ¼Ó£¬¼õ£¬³Ë·¨ÔËËã
+//ä½œè€…ï¼šæè£è´µ
+//æ—¶é—´ï¼š2016-07-15
+//æè¿°ï¼šç”¨å­—ç¬¦ä¸²å®ç°å¤§æ•°æ®ä¹‹é—´çš„åŠ ï¼Œå‡ï¼Œä¹˜æ³•è¿ç®—
 //***********************************************************************************
 
 #include <iostream>
@@ -34,10 +34,18 @@ string StrAdd(string s1, string s2)
 	s1[0] -= 10;
 	return "1" + s1;
 }
-//s1´óÓÚµÈÓÚs2
+//ä¸¤ä¸ªæ­£æ•´æ•°ç›¸å‡
 string StrSub(string s1, string s2)
 {
 	int n = s1.length(), m = s2.length();
+	bool flag = true;
+	if (n < m || (n == m && s1 < s2))
+	{
+		string temp = s1;
+		s1 = s2;
+		s2 = temp;
+		flag = false;
+	}
 	if (m < n)
 		s2 = string(n - m, '0') + s2;
 	for (int i = n - 1; i >= 0; i--)
@@ -51,9 +59,10 @@ string StrSub(string s1, string s2)
 	}
 	int pos = s1.find_first_not_of('0');
 	if (pos == string::npos) return "0";
-	return s1.substr(pos);
+	if(flag) return s1.substr(pos);
+	return '-' + s1.substr(pos);
 }
-//×Ö·û´®³ËÒÔÒ»¸öĞ¡ÓÚ10µÄÕıÕûÊı
+//å­—ç¬¦ä¸²ä¹˜ä»¥ä¸€ä¸ªå°äº10çš„æ­£æ•´æ•°
 string Mul(string s,int m)
 {
 	if (m == 0) return "0";
@@ -115,7 +124,7 @@ int Div(string& s1, string s2)
 	if (s1 == "0") s1 = "";
 	return middle;
 }
-//×Ö·û´®¶ÔµÄµÚÒ»¸öÖµÎªÉÌ£¬µÚ¶ş¸öÖµÎªÓàÊı
+//å­—ç¬¦ä¸²å¯¹çš„ç¬¬ä¸€ä¸ªå€¼ä¸ºå•†ï¼Œç¬¬äºŒä¸ªå€¼ä¸ºä½™æ•°
 PAIR StrDiv(string dividend, string divisor)
 {
 	if (divisor == "0") return PAIR(0, 0);
